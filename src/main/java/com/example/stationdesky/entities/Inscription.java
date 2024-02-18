@@ -18,6 +18,10 @@ public class Inscription implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numInscrit;
     private int numSemaine;
+    @ManyToOne
+    private Skieur ski;
+    @ManyToOne
+    private  Cours cours;
 
 
 
