@@ -11,7 +11,7 @@ import java.util.List;
 public class GestionCours implements IGestionCours{
 
     @Autowired
-    ICoursRepo coursRepo;
+    private ICoursRepo coursRepo;
     @Override
     public List retrieveAllCourses() {
         return coursRepo.findAll();

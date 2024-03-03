@@ -24,7 +24,4 @@ public class Moniteur implements Serializable {
     private LocalDate dateRecru;
     @OneToMany
     private List<Cours>cours;
-
-
-
 }

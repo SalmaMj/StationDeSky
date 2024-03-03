@@ -10,7 +10,7 @@ import java.util.List;
 public class GestionMoniteurs implements IGestionMoniteurs{
 
     @Autowired
-    IMoniteurRepo moniteurRepo;
+    private IMoniteurRepo moniteurRepo;
     @Override
     public List retrieveAllMoniteurs() {
         return moniteurRepo.findAll();
