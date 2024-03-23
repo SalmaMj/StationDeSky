@@ -34,4 +34,9 @@ public class GestionPiste implements IGestionPiste{
         return pisteRepo.findById(numPiste).orElse(null);
     }
 
+    @Override
+    public void removePiste(Long numPiste) {
+        pisteRepo.deleteById(numPiste);
+    }
+
 }

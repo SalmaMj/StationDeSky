@@ -10,4 +10,6 @@ public interface IGestionCours {
     Cours updateCours (Cours cours);
     Cours retrieveCours (Long numCours);
 
+    void removeCours(Long numCours);
+
 }

@@ -31,4 +31,9 @@ public class GestionCours implements IGestionCours{
     public Cours retrieveCours(Long numCours) {
         return coursRepo.findById(numCours).orElse(null);
     }
+
+    @Override
+    public void removeCours(Long numCours) {
+        coursRepo.deleteById(numCours);
+    }
 }

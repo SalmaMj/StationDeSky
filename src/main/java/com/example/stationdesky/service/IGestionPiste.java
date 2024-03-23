@@ -10,4 +10,7 @@ public interface IGestionPiste {
     Piste addPiste(Piste piste);
     Piste updatePiste (Piste piste);
     Piste retrievePiste (Long numPiste);
+
+    void removePiste(Long numPiste) ;
+
 }

@@ -1,7 +1,9 @@
 package com.example.stationdesky.controller;
 
+import com.example.stationdesky.entities.Abonnement;
+import com.example.stationdesky.entities.Piste;
 import com.example.stationdesky.entities.Skieur;
-import com.example.stationdesky.service.GestionCours;
+import com.example.stationdesky.service.IGestionPiste;
 import com.example.stationdesky.service.IGestionSkieur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,29 +11,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/skieur")
-public class SkieurController {
+@RequestMapping("/pistes")
+public class PisteController {
     @Autowired
-    IGestionSkieur skieur;
+    IGestionPiste piste;
     @GetMapping("/getall")
-    public List<Skieur> getAll(){
-        return  skieur.retrieveAllSkieur();
+    public List<Piste> getAll(){
+        return  piste.retrieveAllPistes();
     }
-    @PostMapping("/addskieur")
-    public Skieur ajouterSkieur(@RequestBody Skieur sk){
-        return skieur.addSkieur(sk);
+    @PostMapping("/addPiste")
+    public Piste ajouterPiste(@RequestBody Piste pis){
+        return piste.addPiste(pis);
     }
-    @GetMapping("/getSkieur/{id}")
-    public Skieur getSkiD(@PathVariable("id")long id){
-        return skieur.retrieveSkieur(id);
+    @GetMapping("/getPiste/{id}")
+    public Piste getPisteiD(@PathVariable("id")long id){
+        return piste.retrievePiste(id);
     }
-    @DeleteMapping("/removeSkieur/{id}")
-    public void removeById(@PathVariable("id") long id) {
-        skieur.removeSkieur(id);
+    @DeleteMapping("/removePiste/{id}")
+    public String removeById(@PathVariable("id") long id) {
+        piste.removePiste(id);
+        return "Piste avec l'ID " + id + " supprimé avec succès";
     }
-    @PutMapping("/updateSki/{id}")
-    public Skieur updateByid(@RequestBody Skieur ski){
-        return skieur.updateSkieur(ski);
+    @PutMapping("/updatePiste/{id}")
+    public Piste updateByid(@RequestBody Piste pis){
+         return piste.updatePiste(pis);
     }
 
 }

@@ -10,4 +10,7 @@ public interface IGestionMoniteurs {
     Moniteur addMoniteur(Moniteur moniteur);
     Moniteur updateMoniteur (Moniteur moniteur);
     Moniteur retrieveMoniteur (Long numMoniteur);
+    void removeMoniteur(Long numMoniteur) ;
+
+    Moniteur addMoniteurAndAssigntoCours(Moniteur m, Long numCours);
 }

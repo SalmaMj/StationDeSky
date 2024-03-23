@@ -1,6 +1,9 @@
 package com.example.stationdesky.service;
 
+import com.example.stationdesky.entities.Abonnement;
 import com.example.stationdesky.entities.Cours;
+import com.example.stationdesky.entities.Moniteur;
+import com.example.stationdesky.repository.IAbonnementRepo;
 import com.example.stationdesky.repository.ICoursRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,32 +11,32 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GestionCours implements IGestionCours{
+public class GestionAbonnement implements IGestionAbonnemnt{
 
     @Autowired
-    private ICoursRepo coursRepo;
+    private IAbonnementRepo abonnementRepo;
     @Override
-    public List retrieveAllCourses() {
-        return coursRepo.findAll();
+    public List retrieveAllAbonnemnts() {
+        return abonnementRepo.findAll();
     }
 
     @Override
-    public Cours addCours(Cours cours) {
-        return coursRepo.save(cours);
+    public Abonnement addAbonnemnt(Abonnement abn) {
+        return abonnementRepo.save(abn);
     }
 
     @Override
-    public Cours updateCours(Cours cours) {
-        return coursRepo.save(cours);
+    public Abonnement updateAbonnemnt(Abonnement abn) {
+        return abonnementRepo.save(abn);
     }
 
     @Override
-    public Cours retrieveCours(Long numCours) {
-        return coursRepo.findById(numCours).orElse(null);
+    public Abonnement retrieveAbonnemnt(Long numAbon) {
+        return abonnementRepo.findById(numAbon).orElse(null);
     }
 
     @Override
-    public void removeCours(Long numCours) {
-        coursRepo.deleteById(numCours);
+    public void removeAbonnemnt(Long numAbon) {
+        abonnementRepo.deleteById(numAbon);
     }
 }

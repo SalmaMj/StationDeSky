@@ -1,6 +1,8 @@
 package com.example.stationdesky.controller;
 
+import com.example.stationdesky.entities.Moniteur;
 import com.example.stationdesky.entities.Skieur;
+import com.example.stationdesky.service.IGestionMoniteurs;
 import com.example.stationdesky.service.IGestionSkieur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,29 +10,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/skieur")
-public class AbonnementController {
+@RequestMapping("/moniteurs")
+public class MoniteurController {
     @Autowired
-    IGestionSkieur skieur;
+    IGestionMoniteurs moniteurs;
     @GetMapping("/getall")
     public List<Skieur> getAll(){
-        return  skieur.retrieveAllSkieur();
+        return  moniteurs.retrieveAllMoniteurs();
     }
-    @PostMapping("/addskieur")
-    public Skieur ajouterSkieur(@RequestBody Skieur sk){
-        return skieur.addSkieur(sk);
+    @PostMapping("/addMoniteur")
+    public Moniteur ajouterMoniteur(@RequestBody  Moniteur moniteur){
+        return moniteurs.addMoniteur(moniteur);
     }
-    @GetMapping("/getSkieur/{id}")
-    public Skieur getSkiD(@PathVariable("id")long id){
-        return skieur.retrieveSkieur(id);
+    @GetMapping("/getMoniteur/{id}")
+    public Moniteur getSkiD(@PathVariable("id")long id){
+        return moniteurs.retrieveMoniteur(id);
     }
-    @DeleteMapping("/removeSkieur/{id}")
-    public void removeById(@PathVariable("id") long id) {
-        skieur.removeSkieur(id);
+    @DeleteMapping("/removeMoniteur/{id}")
+    public String removeById(@PathVariable("id") long id) {
+        moniteurs.removeMoniteur(id);
+        return "moniteur avec l'ID " + id + " supprimé avec succès";
     }
-    @PutMapping("/updateSki/{id}")
-    public Skieur updateByid(@RequestBody Skieur ski){
-        return skieur.updateSkieur(ski);
+    @PutMapping("/updateMoniteur/{id}")
+    public Moniteur updateByid(@RequestBody Moniteur moniteur){
+        return moniteurs.updateMoniteur(moniteur);
+    }
+    @PostMapping("/assigncours/{num}")
+    public Moniteur addMoniteurAndAssigntoCours(@RequestBody Moniteur m,@PathVariable("num") Long numCours){
+        return moniteurs.addMoniteurAndAssigntoCours(m,numCours);
     }
 
 }

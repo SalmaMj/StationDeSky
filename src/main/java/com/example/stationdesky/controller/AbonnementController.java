@@ -1,7 +1,8 @@
 package com.example.stationdesky.controller;
 
+import com.example.stationdesky.entities.Abonnement;
 import com.example.stationdesky.entities.Skieur;
-import com.example.stationdesky.service.GestionCours;
+import com.example.stationdesky.service.IGestionAbonnemnt;
 import com.example.stationdesky.service.IGestionSkieur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,29 +10,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/skieur")
-public class SkieurController {
+@RequestMapping("/abonnements")
+public class AbonnementController {
     @Autowired
-    IGestionSkieur skieur;
+    IGestionAbonnemnt abonnement;
     @GetMapping("/getall")
-    public List<Skieur> getAll(){
-        return  skieur.retrieveAllSkieur();
+    public List<Abonnement> getAll(){
+        return  abonnement.retrieveAllAbonnemnts();
     }
-    @PostMapping("/addskieur")
-    public Skieur ajouterSkieur(@RequestBody Skieur sk){
-        return skieur.addSkieur(sk);
+    @PostMapping("/addAbn")
+    public Abonnement ajouterSkieur(@RequestBody Abonnement ab){
+        return abonnement.addAbonnemnt(ab);
     }
-    @GetMapping("/getSkieur/{id}")
-    public Skieur getSkiD(@PathVariable("id")long id){
-        return skieur.retrieveSkieur(id);
+    @GetMapping("/getAbn/{id}")
+    public Abonnement getSkiD(@PathVariable("id")long id){
+        return abonnement.retrieveAbonnemnt(id);
     }
-    @DeleteMapping("/removeSkieur/{id}")
-    public void removeById(@PathVariable("id") long id) {
-        skieur.removeSkieur(id);
+    @DeleteMapping("/removeAbn/{id}")
+    public String removeById(@PathVariable("id") long id) {
+        abonnement.removeAbonnemnt(id);
+        return "Abonnement avec l'ID " + id + " supprimé avec succès";
     }
-    @PutMapping("/updateSki/{id}")
-    public Skieur updateByid(@RequestBody Skieur ski){
-        return skieur.updateSkieur(ski);
+    @PutMapping("/updateAbn/{id}")
+    public Abonnement updateByid(@RequestBody Abonnement ab){
+        return abonnement.updateAbonnemnt(ab);
     }
 
 }

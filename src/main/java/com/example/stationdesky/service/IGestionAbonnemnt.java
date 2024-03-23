@@ -1,15 +1,16 @@
 package com.example.stationdesky.service;
 
+import com.example.stationdesky.entities.Abonnement;
 import com.example.stationdesky.entities.Moniteur;
 
 import java.util.List;
 
-public interface IGestionMoniteurs {
+public interface IGestionAbonnemnt {
 
-    List retrieveAllMoniteurs();
-    Moniteur addMoniteur(Moniteur moniteur);
-    Moniteur updateMoniteur (Moniteur moniteur);
-    Moniteur retrieveMoniteur (Long numMoniteur);
-    void removeMoniteur(Long numMoniteur) ;
+    List retrieveAllAbonnemnts();
+    Abonnement addAbonnemnt(Abonnement abn);
+    Abonnement updateAbonnemnt (Abonnement abn);
+    Abonnement retrieveAbonnemnt (Long numAbon);
+    void removeAbonnemnt(Long numAbon) ;
 
 }

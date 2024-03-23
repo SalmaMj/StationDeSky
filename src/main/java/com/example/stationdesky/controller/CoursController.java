@@ -1,7 +1,8 @@
 package com.example.stationdesky.controller;
 
+import com.example.stationdesky.entities.Cours;
 import com.example.stationdesky.entities.Skieur;
-import com.example.stationdesky.service.GestionCours;
+import com.example.stationdesky.service.IGestionCours;
 import com.example.stationdesky.service.IGestionSkieur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,29 +10,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/skieur")
-public class SkieurController {
+@RequestMapping("/cours")
+public class CoursController {
     @Autowired
-    IGestionSkieur skieur;
+    IGestionCours cours;
     @GetMapping("/getall")
-    public List<Skieur> getAll(){
-        return  skieur.retrieveAllSkieur();
+    public List<Cours> getAll(){
+        return  cours.retrieveAllCourses();
     }
-    @PostMapping("/addskieur")
-    public Skieur ajouterSkieur(@RequestBody Skieur sk){
-        return skieur.addSkieur(sk);
+    @PostMapping("/addcours")
+    public Cours ajouterCours(@RequestBody Cours course){
+        return cours.addCours(course);
     }
-    @GetMapping("/getSkieur/{id}")
-    public Skieur getSkiD(@PathVariable("id")long id){
-        return skieur.retrieveSkieur(id);
+    @GetMapping("/getcours/{id}")
+    public Cours getSkiD(@PathVariable("id")long id){
+        return cours.retrieveCours(id);
     }
-    @DeleteMapping("/removeSkieur/{id}")
-    public void removeById(@PathVariable("id") long id) {
-        skieur.removeSkieur(id);
+    @DeleteMapping("/removecours/{id}")
+    public String removeById(@PathVariable("id") long id) {
+        cours.removeCours(id);
+        return "Cours avec l'ID " + id + " supprimé avec succès";
     }
-    @PutMapping("/updateSki/{id}")
-    public Skieur updateByid(@RequestBody Skieur ski){
-        return skieur.updateSkieur(ski);
+    @PutMapping("/updatecours/{id}")
+    public Cours updateByid(@RequestBody Cours course){
+        return cours.updateCours(course);
     }
 
 }
